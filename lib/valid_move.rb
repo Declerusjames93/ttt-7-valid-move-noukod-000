@@ -1,27 +1,23 @@
 # code your #valid_move? method here
-  board = [" ", " ", "X", " ", " ", " ", " ", "O", " "]
-puts "Enter a position on the board 1-9:"
-index=STDIN.gets.chomp.to_i
-n_index=index - 1
-def valid_move?(board, index)
-if(position_taken?(board, n_index)==" ")
-  return true
+  board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+  def valid_move?(board,index)
+if (index.to_i.between?(1, 9) && !(position_taken?(board, index.to_i - 1)))
+return true
 else
   return nil
+  end
 end
 
- if(board[n_index].between?(0, 8))
-   return true
- else
-   return
-   nil
- end
-end
-
-def position_taken?(board, n_index)
-  if(board[n_index]=="X" || board[n_index]=="O")
-    return true
+def position_taken?(board, index)
+  if(board[index.to_i - 1]=="X" || board[index.to_i - 1]=="O"
+    return nil
   else
-    return false
+    return true
+  end
 end
-end
+
+#def position_taken?(board,index)
+#return false if [" ", "", nil].include?(board[index])
+#return true if ["X", "O"].include?(board[index])
+#raise "#{board[index]} is not a valid move"
+#end
